@@ -10,7 +10,8 @@ public class Main {
 
         String caminhoTexto = "D:\\arquivo.txt";
         String caminhoChaves = "D:\\palavras.txt";
-        String caminhoCriar = "D:\\";
+        String caminhoCriar = "D:\\indice.txt";
+        
         String[] palavrasChaves = arquivo.lerArquivo(caminhoChaves).split("[\\s,]+");
 
         for (int i = 0; i < palavrasChaves.length; i++) {
