@@ -15,7 +15,7 @@ public class Arquivo {
     }
 
     public void criarArquivo(String caminho, String conteudo) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(caminho));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(caminho, true));
         writer.write(conteudo);
     }
 }
