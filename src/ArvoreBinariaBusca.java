@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ArvoreBinariaBusca {
     class Nodo {
 
@@ -147,16 +152,17 @@ public class ArvoreBinariaBusca {
         }
     }
 
-    public void imprimirRemissivo() {
-        imprimirRemissivo(this.raiz);
+    public void imprimirRemissivo(String caminhoArquivo) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(caminhoArquivo, true))) {
+            imprimirRemissivo(this.raiz, writer);
+        }
     }
-
-    private void imprimirRemissivo(Nodo nodo) {
+    private void imprimirRemissivo(Nodo nodo, BufferedWriter writer) throws IOException {
         if (nodo != null) {
-            imprimirRemissivo(nodo.esquerdo);
-            System.out.print(nodo.elemento + " ");
-            nodo.linhasLista.imprimirLista();
-            imprimirRemissivo(nodo.direito);
+            imprimirRemissivo(nodo.esquerdo, writer);
+            writer.write(nodo.elemento + " ");
+            nodo.linhasLista.imprimirLista(writer);
+            imprimirRemissivo(nodo.direito, writer);
         }
     }
 
