@@ -1,23 +1,35 @@
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-        Arquivo arquivo = new Arquivo();
+    public static void main(String[] args) throws IOException {
+        HashColisaoExterior hash = new HashColisaoExterior(50);
         ArvoreBinariaBusca arvore = new ArvoreBinariaBusca();
+        Arquivo arquivo = new Arquivo();
 
-        String caminho = "D:\\arquivo.txt";
-        String[] palavrasChave = {"and"};
+        String caminhoTexto = "D:\\arquivo.txt";
+        String caminhoChaves = "D:\\palavras.txt";
+        String caminhoCriar = "D:\\";
+        String[] palavrasChaves = arquivo.lerArquivo(caminhoChaves).split("[\\s,]+");
 
-        String[] palavras = arquivo.lerArquivo(caminho).split("\\W+");
-
-        HashColisaoExterior hash = new HashColisaoExterior(palavras.length);
-
-        for (int i = 0;i < palavras.length;i++) {
-            arvore.insere(palavras[i]);
-            hash.insere(palavras[i]);
+        for (int i = 0; i < palavrasChaves.length; i++) {
+            hash.insere(palavrasChaves[i]);
+            arvore.insere(palavrasChaves[i]);
         }
 
-        hash.imprime();
-        arvore.imprimeEmOrdem();
+        BufferedReader reader = new BufferedReader(new FileReader(caminhoTexto));
+        String linha;
+        int numeroLinha = 1;
+        while ((linha = reader.readLine()) != null) {
+            String[] textoConteudo = linha.split("[\\s.,;:]+");
+            for (int i = 0;i < textoConteudo.length;i++){
+                if (hash.contem(textoConteudo[i])) {
+                    arvore.adicionarRemissivo(textoConteudo[i],numeroLinha);
+                }
+            }
+            numeroLinha++;
+        }
+        arvore.imprimirRemissivo();
     }
 }

@@ -1,15 +1,16 @@
 public class ArvoreBinariaBusca {
-
     class Nodo {
 
         public String elemento;
         public Nodo esquerdo;
         public Nodo direito;
+        public ListaDuplamenteEncadeada linhasLista;
 
         public Nodo(String elemento) {
             this.elemento = elemento;
             this.esquerdo = null;
             this.direito = null;
+            this.linhasLista = new ListaDuplamenteEncadeada();
         }
     }
 
@@ -48,9 +49,7 @@ public class ArvoreBinariaBusca {
                 fila.enfileira(cursor.direito);
             }
         }
-
         System.out.println();
-
     }
 
     public void imprimePreOrdem() {
@@ -130,6 +129,37 @@ public class ArvoreBinariaBusca {
             }
         }
     }
+
+    public void adicionarRemissivo(String elemento, int linha) {
+        adicionarRemissivo(this.raiz, elemento, linha);
+    }
+
+    private void adicionarRemissivo(Nodo nodo, String elemento, int linha) {
+        if (nodo == null) {
+            return;
+        }
+        if (elemento.equals(nodo.elemento)) {
+            nodo.linhasLista.insereFinal(Integer.toString(linha));
+        } else if (elemento.compareTo(nodo.elemento) < 0) {
+            adicionarRemissivo(nodo.esquerdo, elemento, linha);
+        } else {
+            adicionarRemissivo(nodo.direito, elemento, linha);
+        }
+    }
+
+    public void imprimirRemissivo() {
+        imprimirRemissivo(this.raiz);
+    }
+
+    private void imprimirRemissivo(Nodo nodo) {
+        if (nodo != null) {
+            imprimirRemissivo(nodo.esquerdo);
+            System.out.print(nodo.elemento + " ");
+            nodo.linhasLista.imprimirLista();
+            imprimirRemissivo(nodo.direito);
+        }
+    }
+
 
     private Nodo maiorElemento(Nodo nodo) {
         while (nodo.direito != null) {

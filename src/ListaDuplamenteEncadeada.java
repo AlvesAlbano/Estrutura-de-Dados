@@ -1,6 +1,7 @@
 import java.util.NoSuchElementException;
 
 public class ListaDuplamenteEncadeada {
+
     private static class Nodo {
         public String valor;
         public Nodo proximo;
@@ -123,7 +124,6 @@ public class ListaDuplamenteEncadeada {
 
     public void imprimirLista() {
         Nodo atual = primeiro;
-        System.out.print("Lista: ");
         while (atual != null) {
             System.out.print(atual.valor + " ");
             atual = atual.proximo;
@@ -131,15 +131,15 @@ public class ListaDuplamenteEncadeada {
         System.out.println();
     }
 
-    public boolean contem(String valor) {
+    public Nodo contem(String elemento) {
         Nodo atual = primeiro;
         while (atual != null) {
-            if (atual.valor == valor) {
-                return true;
+            if (atual.valor.equals(elemento)) {
+                return atual;
             }
             atual = atual.proximo;
         }
-        return false;
+        return null;
     }
 
     public boolean removeElemento(String valor) {

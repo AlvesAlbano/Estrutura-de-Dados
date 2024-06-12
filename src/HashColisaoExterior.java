@@ -44,7 +44,7 @@ public class HashColisaoExterior {
 
     public boolean contem(String elemento) {
         int endereco = funcaoHash(elemento);
-        return this.vetor[endereco].contem(elemento);
+        return this.vetor[endereco].contem(elemento) != null;
     }
 }
 

@@ -1,23 +1,21 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
 
 public class Arquivo {
 
-    public String lerArquivo(String caminho) throws FileNotFoundException {
-
-        File arquivo = new File(caminho);
-        Scanner scanner = new Scanner(arquivo);
+    public String lerArquivo(String caminho) throws IOException {
         StringBuilder conteudo = new StringBuilder();
 
-        while (scanner.hasNextLine()){
-            conteudo.append(scanner.nextLine()).append("\n");
+        try (BufferedReader reader = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                conteudo.append(linha).append("\n");
+            }
         }
-        scanner.close();
         return conteudo.toString().toLowerCase();
     }
 
-    public void criarArquivo(){
-        // Implementar lógica para criar arquivo
+    public void criarArquivo(String caminho, String conteudo) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(caminho));
+        writer.write(conteudo);
     }
 }
