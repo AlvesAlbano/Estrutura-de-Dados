@@ -15,13 +15,13 @@ public class HashColisaoExterior {
         return this.nElementos;
     }
 
-    public void imprime() {
-        System.out.println("Chave\tValor");
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.print(i + " -->\t");
-            vetor[i].imprimirLista();
-        }
-    }
+//   public void imprime() {
+//        System.out.println("Chave\tValor");
+//        for (int i = 0; i < vetor.length; i++) {
+//            System.out.print(i + " -->\t");
+//            vetor[i].imprimirLista();
+//        }
+//    }
 
     private int funcaoHash(String elemento) {
         return Math.abs(elemento.hashCode()) % this.vetor.length;
