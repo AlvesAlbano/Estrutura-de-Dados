@@ -8,9 +8,9 @@ public class Main {
         ArvoreBinariaBusca arvore = new ArvoreBinariaBusca();
         Arquivo arquivo = new Arquivo();
 
-        String caminhoTexto = "D:\\arquivo.txt";
-        String caminhoChaves = "D:\\palavras.txt";
-        String caminhoCriar = "D:\\indice.txt";
+        String caminhoTexto = "EstruturaDados-main/src/arquivo.txt";
+        String caminhoChaves = "EstruturaDados-main/src/palavras.txt";
+        String caminhoCriar = "EstruturaDados-main/src/indice.txt";
         
         String[] palavrasChaves = arquivo.lerArquivo(caminhoChaves).split("[\\s,]+");
 
@@ -31,6 +31,6 @@ public class Main {
             }
             numeroLinha++;
         }
-        arvore.imprimirRemissivo();
+        arvore.imprimirRemissivo(caminhoCriar);
     }
 }
