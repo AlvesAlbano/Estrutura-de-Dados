@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
 public class ListaDuplamenteEncadeada {
@@ -122,13 +124,13 @@ public class ListaDuplamenteEncadeada {
         }
     }
 
-    public void imprimirLista() {
+    public void imprimirLista(BufferedWriter writer) throws IOException {
         Nodo atual = primeiro;
         while (atual != null) {
-            System.out.print(atual.valor + " ");
+            writer.write(atual.valor + " ");
             atual = atual.proximo;
         }
-        System.out.println();
+        writer.newLine();
     }
 
     public Nodo contem(String elemento) {
