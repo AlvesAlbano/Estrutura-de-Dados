@@ -8,9 +8,9 @@ public class Main {
         ArvoreBinariaBusca arvore = new ArvoreBinariaBusca();
         Arquivo arquivo = new Arquivo();
 
-        String caminhoTexto = "EstruturaDados-main/src/arquivo.txt";
-        String caminhoChaves = "EstruturaDados-main/src/palavras.txt";
-        String caminhoCriar = "EstruturaDados-main/src/indice.txt";
+        String caminhoTexto = "/EstruturaDados-main/src/arquivo.txt";
+        String caminhoChaves = "/EstruturaDados-main/src/palavras.txt";
+        String caminhoCriar = "/EstruturaDados-main/src/indice.txt";
         
         String[] palavrasChaves = arquivo.lerArquivo(caminhoChaves).split("[\\s,]+");
 

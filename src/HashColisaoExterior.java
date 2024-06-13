@@ -47,4 +47,3 @@ public class HashColisaoExterior {
         return this.vetor[endereco].contem(elemento) != null;
     }
 }
-

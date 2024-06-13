@@ -13,9 +13,4 @@ public class Arquivo {
         }
         return conteudo.toString().toLowerCase();
     }
-
-    public void criarArquivo(String caminho, String conteudo) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(caminho, true));
-        writer.write(conteudo);
-    }
 }
